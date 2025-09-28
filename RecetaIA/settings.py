@@ -5,7 +5,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "dev-secret-key")
 DEBUG = True
-ALLOWED_HOSTS = ["*", "localhost", "127.0.0.1", "192.168.0.20"]
+ALLOWED_HOSTS = ["*", "localhost", "127.0.0.1", "192.168.0.20", "18.189.35.17"]
+
 
 class IgnorePortMiddleware:
     def __init__(self, get_response):
@@ -42,7 +43,7 @@ INSTALLED_APPS = [
 ]
 
 CORS_ALLOW_ALL_ORIGINS = False
-CORS_ALLOWED_ORIGINS = ["http://localhost:8081"]
+CORS_ALLOWED_ORIGINS = ["http://localhost:8081","http://18.189.35.17",]
 
 DATABASES = {
     "default": {
@@ -78,4 +79,5 @@ ROOT_URLCONF = "RecetaIA.urls"
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:8000",
     "http://127.0.0.1:8000",
+    "http://18.189.35.17",
 ]
