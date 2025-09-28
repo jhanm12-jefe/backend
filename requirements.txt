@@ -1,0 +1,7 @@
+django
+psycopg2-binary
+
+google-generativeai
+djangorestframework
+requests
+django-cors-headers
