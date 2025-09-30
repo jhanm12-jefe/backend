@@ -72,8 +72,6 @@ TEMPLATES = [
     },
 ]
 
-STATIC_URL = "/static/"
-STATIC_ROOT = BASE_DIR / "staticfiles"
-STATICFILES_DIRS = [BASE_DIR / "static"]
+
 ROOT_URLCONF = "RecetaIA.urls"
 
