@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     "corsheaders",
 ]
 
-CORS_ALLOW_ALL_ORIGINS = False
+CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWED_ORIGINS = ["http://localhost:8081","http://18.189.35.17",]
 
 DATABASES = {
