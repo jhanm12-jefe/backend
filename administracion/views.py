@@ -188,7 +188,8 @@ def loginUser(request):
             "message": "Login exitoso",   # ✅ Aquí va el mensaje
             "user_id": user.id,
             "correo": user.correo,
-            "rol": user.rol.nombre
+            "rol": user.rol.nombre,
+            "is_premium": user.is_premium
         }, status=status.HTTP_200_OK)
     else:
         return Response({"error": "Contraseña incorrecta"}, status=status.HTTP_400_BAD_REQUEST)
