@@ -76,10 +76,4 @@ STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 STATICFILES_DIRS = [BASE_DIR / "static"]
 ROOT_URLCONF = "RecetaIA.urls"
-CSRF_TRUSTED_ORIGINS = [
-    "*",
-    "http://localhost:8000",
-    "http://127.0.0.1:8000",
-    "http://18.189.35.17",
-    "http://18.189.35.17:8000",
-]
+
