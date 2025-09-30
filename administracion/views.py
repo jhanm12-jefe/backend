@@ -169,9 +169,13 @@ def prueba(request):
 
 @api_view(['POST'])
 def loginUser(request):
+    # Si alguien intenta hacer GET u otro método, devolvemos 405
+    if request.method != 'POST':
+        return Response({"error": "Método no permitido"}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
+
     correo = request.data.get('correo')
     password = request.data.get('password')
-    print("Request data:", request.data)
+    print("Request data:", request.data)  # Solo para depuración
 
     if not correo or not password:
         return Response({"error": "Correo y contraseña son requeridos"}, status=status.HTTP_400_BAD_REQUEST)
@@ -183,7 +187,7 @@ def loginUser(request):
 
     if check_password(password, user.password):
         return Response({
-            "message": "Login exitoso",   # ✅ Aquí va el mensaje
+            "message": "Login exitoso",
             "user_id": user.id,
             "correo": user.correo,
             "rol": user.rol.nombre,
