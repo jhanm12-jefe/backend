@@ -51,7 +51,7 @@ def crudRol_detail(request,id):
 def crudUser(request):
     """
     GET: Lista todos los usuarios
-    POST: Crea un nuevo usuario con rol 'usuario' por defecto
+    POST: Crea un nuevo usuario con rol 'usuario' por defecto y retorna login automático
     """
     if request.method == 'GET':
         users = User.objects.all()
@@ -59,19 +59,17 @@ def crudUser(request):
         return Response(serializer.data)
 
     elif request.method == 'POST':
-        data = request.data.copy()
-        # Asignar el rol 'usuario' por defecto
-        rol, created = Rol.objects.get_or_create(nombre='usuario')
-        data['rol'] = rol.id
-
-        # Hashear la contraseña antes de guardar
-        if 'password' in data:
-            data['password'] = make_password(data['password'])
-
-        serializer = UserSerializer(data=data)
+        serializer = UserSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
+            user = serializer.save()  # Aquí ya se hashea la contraseña en create()
+            
+            # Retornar info para login automático
+            return Response({
+                "message": "Registro exitoso",
+                "user_id": user.id,
+                "correo": user.correo,
+                "rol": user.rol.nombre
+            }, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
