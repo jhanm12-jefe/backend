@@ -83,4 +83,3 @@ CSRF_TRUSTED_ORIGINS = [
     "http://18.189.35.17",
     "http://18.189.35.17:8000",
 ]
-"usesCleartextTraffic": True
