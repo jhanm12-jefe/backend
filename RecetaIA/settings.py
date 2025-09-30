@@ -42,8 +42,8 @@ INSTALLED_APPS = [
     "corsheaders",
 ]
 
-CORS_ALLOW_ALL_ORIGINS = False
-CORS_ALLOWED_ORIGINS = ["http://localhost:8081","http://18.189.35.17",]
+CORS_ALLOW_ALL_ORIGINS = True
+#CORS_ALLOWED_ORIGINS = ["http://localhost:8081","http://18.189.35.17",]
 
 DATABASES = {
     "default": {
@@ -77,8 +77,10 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 STATICFILES_DIRS = [BASE_DIR / "static"]
 ROOT_URLCONF = "RecetaIA.urls"
 CSRF_TRUSTED_ORIGINS = [
+    "*",
     "http://localhost:8000",
     "http://127.0.0.1:8000",
     "http://18.189.35.17",
     "http://18.189.35.17:8000",
 ]
+"usesCleartextTraffic": True
